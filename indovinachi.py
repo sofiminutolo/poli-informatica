@@ -38,6 +38,7 @@ def matchatore(caratteristiche, personaggio) :
             return False
     return True
 
+# Main function
 def main(filedomande):
     personaggi = dizionatore(filep)
     leggimeli(personaggi)
