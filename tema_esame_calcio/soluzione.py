@@ -40,7 +40,6 @@ def getRiepilogo(punti, goal):
         fatti,subiti = goal[k]
         score=punti[k]
         riepilogo.append({"nome":k,"punti":score,"goal_fatti":fatti,"goal_subiti":subiti})
-    print (riepilogo)
     return riepilogo
 
 def orderBy(dictionaryList,propertyName,idName):
@@ -57,14 +56,22 @@ def orderBy(dictionaryList,propertyName,idName):
 def main():
     punti, gol = assegna_punti(partite("torneo.txt"))
     riepilogo = getRiepilogo(punti=punti,goal=gol)
-    print(riepilogo)
     classifica = orderBy(riepilogo,"punti","nome")
     classifica.reverse()
     print("============")
     print(" Classifica ")
     print("============")
     for n,info in enumerate(classifica):
-        print("{n} - {i[nome]:10} : Punti {i[punti]:2}, Goal Fatti:{i[goal_fatti]:2}, Goal Subiti:{i[goal_subiti]:2}   ".format(n=n,i=info))
+        icon = "  "
+        if(n==0):
+            icon = "\U0001F3C6"
+        elif(n==1):
+            icon = "\U0001F948"
+        elif(n==2):
+            icon = "\U0001F949"
+        elif(n==len(classifica)-1):
+            icon = "\U0001F4A9"
+        print("{n} - {i[nome]:10} {ico} : Punti {i[punti]:2}, Goal Fatti:{i[goal_fatti]:2}, Goal Subiti:{i[goal_subiti]:2}   ".format(n=n,i=info,ico=icon))
     print()
     print("=================")
     print(" Miglior attacco ")
