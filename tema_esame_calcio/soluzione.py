@@ -1,3 +1,8 @@
+import os
+import sys
+script_directory = os.path.dirname(os.path.abspath(sys.argv[0]))
+print(script_directory)
+
 def partite(file):
     with open(file,"r", encoding="utf-8") as f :
         partite=[]
@@ -54,7 +59,7 @@ def orderBy(dictionaryList,propertyName,idName):
     
 
 def main():
-    punti, gol = assegna_punti(partite("torneo.txt"))
+    punti, gol = assegna_punti(partite(script_directory+"/torneo.txt"))
     riepilogo = getRiepilogo(punti=punti,goal=gol)
     classifica = orderBy(riepilogo,"punti","nome")
     classifica.reverse()
